@@ -6,6 +6,8 @@ import com.michelpessoa.livrariaapi.model.repository.BookRepository;
 import com.michelpessoa.livrariaapi.service.BookService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class BookServiceImpl implements BookService {
 
@@ -22,5 +24,15 @@ public class BookServiceImpl implements BookService {
         }
 
         return repository.save(book);
+    }
+
+    @Override
+    public Optional<Book> getById(Long id) {
+        return repository.findById(id);
+    }
+
+    @Override
+    public void delete(Book book) {
+        repository.delete(book);
     }
 }
